@@ -57,4 +57,7 @@ console.log(school.name); // Accessing the name property
 console.log(school.speciality.research); // Accessing the research property inside the speciality object
 console.log(school.events[1]); // Accessing the second event in the events array
 
-
+//loop through object properties using for...in loop, for array we use for...of loop
+for (const key in school) {
+    console.log(key, ':', school[key]); // Accessing each key and its corresponding value
+}
