@@ -11,3 +11,11 @@ for (let i = 0; i < 10; i++) {
     }
     console.log(i, 'loop');
 }
+
+for (let i = 0; i < 10; i++) {
+    if (i%2===0) {
+        continue; // Skip the rest of the loop body when i is even
+    }
+    console.log(i);
+}
+
