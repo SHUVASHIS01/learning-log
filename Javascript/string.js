@@ -56,7 +56,7 @@ console.log(str3.includes('awesome'));
 //ultay dewa using loop
 let reverse = '';
 const str4 = 'JavaScript is awesome!';
-for (num of str4){
+for (let num of str4){
     reverse = num + reverse;
 }
 console.log(reverse); // Output: "!emosewa si tpircSavaJ"
