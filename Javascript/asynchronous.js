@@ -112,3 +112,27 @@ p1.then((res) => {
     
 });
 
+//async await
+
+async function gelo (){
+    console.log('gelo')
+}
+
+function api (id){
+    return new Promise((resolve, reject) => {
+        setTimeout(() =>{
+            console.log("data weather" , id);
+            resolve(200);
+        }, 5000);
+    });
+}
+async function getWeatherData(){
+    console.log('getting weather data 1.....')
+    await api(1);
+    console.log('getting weather data 2.....')
+    await api(2)
+    console.log('getting weather data 3.....')
+    await api(3)
+}
+getWeatherData()
+
