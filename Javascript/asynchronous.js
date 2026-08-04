@@ -82,3 +82,33 @@ promis.catch((err)=>{
 })
 
 //chaining of promises 
+function async1 (){
+    return new Promise((resolve, reject) => {
+    setTimeout(()=>{
+        console.log('d1');
+        resolve('success');
+    },4000);
+    });
+}
+function async2 (){
+    return new Promise((resolve, reject) => {
+    setTimeout(()=>{
+        console.log('d2');
+        resolve('success');
+    },4000);
+    });
+}
+
+console.log('fething d1');
+let p1 = async1();
+p1.then((res) => {
+    console.log(res);
+    console.log('fething d2');
+    let p2 = async2();
+    p2.then((res) => {
+        console.log(res);
+        console.log('whole data fetched')
+    });
+    
+});
+
