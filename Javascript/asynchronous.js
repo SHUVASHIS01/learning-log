@@ -59,4 +59,26 @@ getData(1, ()=> {
     })
 })
 
-//Promises
+//Promises, 
+let promise = new Promise((resolve, reject) => {
+    console.log('ami promise re');
+    resolve(123);
+    //reject(123);
+    
+})
+//how to use promise
+const getPromise=()=>{
+    return new Promise((resolve, reject)=>{
+        console.log('I am a promise');
+        resolve('success')
+    })
+}
+let promis = getPromise();
+promis.then((res)=>{
+    console.log('promise fullfilled', res)
+})
+promis.catch((err)=>{
+    console.log('promise rejected', err)
+})
+
+//chaining of promises 
