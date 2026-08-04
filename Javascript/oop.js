@@ -131,3 +131,48 @@ dog.eat();
 
 dog.bark();
 
+//Polymorphism: Same method behaves differently.
+
+class Animal1 {
+    speak() {
+        console.log("Animal");
+    }
+}
+
+class Cat1 extends Animal1 {
+    speak() {
+        console.log("Meow");
+    }
+}
+
+class Dog1 extends Animal1 {
+    speak() {
+        console.log("Woof");
+    }
+}
+
+const animals = [
+    new Cat1(),
+    new Dog1()
+];
+
+animals.forEach(a => a.speak());
+
+//static methods : Belong to the class, not objects.
+class MathUtil {
+
+    static add(a, b) {
+        return a + b;
+    }
+
+}
+
+console.log(MathUtil.add(5,3));
+
+//prototype
+const person12 = {
+    name: "John"
+};
+
+console.log(Object.getPrototypeOf(person12));
+
