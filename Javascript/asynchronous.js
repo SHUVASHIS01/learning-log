@@ -26,4 +26,37 @@ function calculator(a,b, sumCallback){
 calculator(1,2, sum)
 
 
-//nesting
+//nesting   of callback
+let age = 19;
+if (age>=18){
+    if (age>=60){
+        console.log('senior')
+    }
+    else if(age>18){
+        console.log('mature')
+
+    }
+    else{
+        console.log('child')
+    }
+
+}
+function getData(dataId, getNextData){
+    //2s
+    setTimeout(()=>{
+        console.log('data', dataId);
+        if (getNextData){
+            getNextData();
+        }
+    },2000)
+}
+//callbackhell
+getData(1, ()=> {
+    getData(2, ()=>{
+        getData(3, ()=>{
+            getData(4);
+        })
+    })
+})
+
+//Promises
