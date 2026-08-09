@@ -325,6 +325,80 @@ const person = {
 
 //Event propagation 
 
+// export default function Toolbar() {
+//   return (
+//     <div className="Toolbar" onClick={() => {
+//       alert('You clicked on the toolbar!');
+//     }}>
+//       <button onClick={() => alert('Playing!')}>
+//         Play Movie
+//       </button>
+//       <button onClick={() => alert('Uploading!')}>
+//         Upload Image
+//       </button>
+//     </div>
+//   );
+// }
+
+
+//Stopping propagation 
+// function Button({ onClick, children }) {
+//   return (
+//     <button onClick={e => {
+//       e.stopPropagation();
+//       onClick();
+//     }}>
+//       {children}
+//     </button>
+//   );
+// }
+
+// export default function Toolbar() {
+//   return (
+//     <div className="Toolbar" onClick={() => {
+//       alert('You clicked on the toolbar!');
+//     }}>
+//       <Button onClick={() => alert('Playing!')}>
+//         Play Movie
+//       </Button>
+//       <Button onClick={() => alert('Uploading!')}>
+//         Upload Image
+//       </Button>
+//     </div>
+//   );
+// }
+
+// export default function Signup() {
+//   return (
+//     <form onSubmit={() => alert('Submitting!')}>
+//       <input />
+//       <button>Send</button>
+//     </form>
+//   );
+// }
+
+//Challenge 1 of 2: Fix an event handler 
+// Clicking this button is supposed to switch the page background between white and black. However, nothing happens when you click it. Fix the problem. (Don’t worry about the logic inside handleClick—that part is fine.)
+export default function LightSwitch() {
+  function handleClick() {
+    let bodyStyle = document.body.style;
+    if (bodyStyle.backgroundColor === 'black') {
+      bodyStyle.backgroundColor = 'white';
+    } else {
+      bodyStyle.backgroundColor = 'black';
+    }
+  }
+
+  return (
+    <button onClick={()=> handleClick()}>
+      Toggle the lights
+    </button>
+  );
+}
+
+
+
+
 
 
 
