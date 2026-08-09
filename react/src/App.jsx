@@ -191,17 +191,29 @@ const person = {
 
 
 // making it pure 
-function Cup({ guest }) {
-  return <h2>Tea cup for guest #{guest}</h2>;
-}
+// function Cup({ guest }) {
+//   return <h2>Tea cup for guest #{guest}</h2>;
+// }
 
-export default function TeaSet() {
+// export default function TeaSet() {
+//   return (
+//     <>
+//       <Cup guest={1} />
+//       <Cup guest={2} />
+//       <Cup guest={3} />
+//     </>
+//   );
+// }
+
+export default function Button() {
+  function handleClick() {
+    alert('You clicked me!');
+  }
+
   return (
-    <>
-      <Cup guest={1} />
-      <Cup guest={2} />
-      <Cup guest={3} />
-    </>
+    <button onClick={handleClick}>
+      Click me
+    </button>
   );
 }
 
