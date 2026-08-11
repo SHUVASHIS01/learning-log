@@ -917,9 +917,9 @@
 
 // push er bodole amra jevabe state er khetre kono elem array te add kori
 
-import { useState } from 'react';
+// import { useState } from 'react';
 
-let nextId = 0;
+// let nextId = 0;
 
 // export default function List() {
 //   const [name, setName] = useState('');
@@ -937,6 +937,10 @@ let nextId = 0;
 //           ...artists,
 //           { id: nextId++, name: name }
 //         ]);
+            // setArtists([
+            // { id: nextId++, name: name },
+            // ...artists // Put old items at the end
+            // ]);
 //       }}>Add</button>
 //       <ul>
 //         {artists.map(artist => (
@@ -946,6 +950,44 @@ let nextId = 0;
 //     </>
 //   );
 // }
+
+// removing an elem using filter()
+import { useState } from 'react';
+
+let initialArtists = [
+  { id: 0, name: 'Marta Colvin Andrade' },
+  { id: 1, name: 'Lamidi Olonade Fakeye'},
+  { id: 2, name: 'Louise Nevelson'},
+];
+
+export default function List() {
+  const [artists, setArtists] = useState(
+    initialArtists
+  );
+
+  return (
+    <>
+      <h1>Inspiring sculptors:</h1>
+      <ul>
+        {artists.map(artist => (
+          <li key={artist.id}>
+            {artist.name}{' '}
+            <button onClick={() => {
+              setArtists(
+                artists.filter(a =>
+                  a.id !== artist.id
+                )
+              );
+            }}>
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
 
 
 
