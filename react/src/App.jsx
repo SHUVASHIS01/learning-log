@@ -399,21 +399,129 @@
 
 
 //State: A Component's Memory
+// import { useState } from 'react';
+// import { sculptureList } from './data.js';
+
+// export default function Gallery() {
+//   const [index, setIndex] = useState(0); //When state updates, useState preserves the newly set value across re-renders instead of resetting to its initial argument, allowing React to return the latest updated data to the component.
+
+//   function handleClick() {
+//     setIndex(index+1);
+//   }
+//   let sculpture = sculptureList[index];
+//   return (
+//     <>
+//       <button onClick={handleClick}>
+//         Next
+//       </button>
+//       <h2>
+//         <i>{sculpture.name} </i>
+//         by {sculpture.artist}
+//       </h2>
+//       <h3>
+//         ({index + 1} of {sculptureList.length})
+//       </h3>
+//       <img
+//         src={sculpture.url}
+//         alt={sculpture.alt}
+//       />
+//       <p>
+//         {sculpture.description}
+//       </p>
+//     </>
+//   );
+// }
+
+// multiple state 
+// import { useState } from 'react';
+// import { sculptureList } from './data.js';
+
+// export default function Gallery() {
+//   const [index, setIndex] = useState(0);
+//   const [showMore, setShowMore] = useState(false);
+
+//   function handleNextClick() {
+//     setIndex(index + 1);
+//   }
+
+//   function handleMoreClick() {
+//     setShowMore(!showMore);
+//   }
+
+//   let sculpture = sculptureList[index];
+//   return (
+//     <>
+//       <button onClick={handleNextClick}>
+//         Next
+//       </button>
+//       <h2>
+//         <i>{sculpture.name} </i>
+//         by {sculpture.artist}
+//       </h2>
+//       <h3>
+//         ({index + 1} of {sculptureList.length})
+//       </h3>
+//       <button onClick={handleMoreClick}>
+//         {showMore ? 'Hide' : 'Show'} details
+//       </button>
+//       {showMore && <p>{sculpture.description}</p>}
+//       <img
+//         src={sculpture.url}
+//         alt={sculpture.alt}
+//       />
+//     </>
+//   );
+// }
+
+
+//State is isolated and private
+// import Gallery from './Gallery.jsx';
+
+// export default function Page() {
+//   return (
+//     <div className="Page">
+//       <Gallery />
+//       <Gallery />
+//     </div>
+//   );
+// }
+
+//challenge solve
 import { useState } from 'react';
 import { sculptureList } from './data.js';
 
 export default function Gallery() {
   const [index, setIndex] = useState(0);
+  const [showMore, setShowMore] = useState(false);
 
-  function handleClick() {
-    setIndex(index + 1);
+  const hasNext = index < sculptureList.length - 1;
+  const hasPrev = index > 0;
+
+  function handleNextClick() {
+    if (hasNext){
+    setIndex(index + 1);   
+    }
+  }
+
+  function handleMoreClick() {
+    setShowMore(!showMore);
+  }
+
+  function handlePrev(){
+        if (hasPrev){
+          setIndex(index - 1);
+      
+    }
   }
 
   let sculpture = sculptureList[index];
   return (
     <>
-      <button onClick={handleClick}>
+      <button onClick={handleNextClick}>
         Next
+      </button>
+      <button onClick={handlePrev}>
+         previous
       </button>
       <h2>
         <i>{sculpture.name} </i>
@@ -422,16 +530,18 @@ export default function Gallery() {
       <h3>
         ({index + 1} of {sculptureList.length})
       </h3>
+      <button onClick={handleMoreClick}>
+        {showMore ? 'Hide' : 'Show'} details
+      </button>
+      {showMore && <p>{sculpture.description}</p>}
       <img
         src={sculpture.url}
         alt={sculpture.alt}
       />
-      <p>
-        {sculpture.description}
-      </p>
     </>
   );
 }
+
 
 
 
