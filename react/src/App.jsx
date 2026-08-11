@@ -487,60 +487,211 @@
 // }
 
 //challenge solve
-import { useState } from 'react';
-import { sculptureList } from './data.js';
+// import { useState } from 'react';
+// import { sculptureList } from './data.js';
 
-export default function Gallery() {
-  const [index, setIndex] = useState(0);
-  const [showMore, setShowMore] = useState(false);
+// export default function Gallery() {
+//   const [index, setIndex] = useState(0);
+//   const [showMore, setShowMore] = useState(false);
 
-  const hasNext = index < sculptureList.length - 1;
-  const hasPrev = index > 0;
+//   const hasNext = index < sculptureList.length - 1;
+//   const hasPrev = index > 0;
 
-  function handleNextClick() {
-    if (hasNext){
-    setIndex(index + 1);   
-    }
-  }
+//   function handleNextClick() {
+//     if (hasNext){
+//     setIndex(index + 1);   
+//     }
+//   }
 
-  function handleMoreClick() {
-    setShowMore(!showMore);
-  }
+//   function handleMoreClick() {
+//     setShowMore(!showMore);
+//   }
 
-  function handlePrev(){
-        if (hasPrev){
-          setIndex(index - 1);
+//   function handlePrev(){
+//         if (hasPrev){
+//           setIndex(index - 1);
       
-    }
+//     }
+//   }
+
+//   let sculpture = sculptureList[index];
+//   return (
+//     <>
+//       <button onClick={handleNextClick}>
+//         Next
+//       </button>
+//       <button onClick={handlePrev}>
+//          previous
+//       </button>
+//       <h2>
+//         <i>{sculpture.name} </i>
+//         by {sculpture.artist}
+//       </h2>
+//       <h3>
+//         ({index + 1} of {sculptureList.length})
+//       </h3>
+//       <button onClick={handleMoreClick}>
+//         {showMore ? 'Hide' : 'Show'} details
+//       </button>
+//       {showMore && <p>{sculpture.description}</p>}
+//       <img
+//         src={sculpture.url}
+//         alt={sculpture.alt}
+//       />
+//     </>
+//   );
+// }
+
+
+// import { useState } from 'react';
+
+// export default function Counter() {
+//   const [number, setNumber] = useState(0);
+
+//   return (
+//     <>
+//       <h1>{number}</h1>
+//       <button onClick={() => {
+//         setNumber(number + 1);
+//         setNumber(number + 1);
+//         setNumber(number + 1);
+//       }}>+3</button>
+//     </>
+//   )
+// }
+
+
+// import { useState } from 'react';
+
+// export default function Form() {
+//   const [to, setTo] = useState('Alice');
+//   const [message, setMessage] = useState('Hello');
+
+//   function handleSubmit(e) {
+//     e.preventDefault();
+//     setTimeout(() => {
+//       alert(`You said ${message} to ${to}`);
+//     }, 5000);
+//   }
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <label>
+//         To:{' '}
+//         <select
+//           value={to}
+//           onChange={e => setTo(e.target.value)}>
+//           <option value="Alice">Alice</option>
+//           <option value="Bob">Bob</option>
+//         </select>
+//       </label>
+//       <textarea
+//         placeholder="Message"
+//         value={message}
+//         onChange={e => setMessage(e.target.value)}
+//       />
+//       <button type="submit">Send</button>
+//     </form>
+//   );
+// }
+
+//Challenge 1 of 1: Implement a traffic light 
+// import { useState } from 'react';
+
+// export default function TrafficLight() {
+//   const [walk, setWalk] = useState(true);
+
+//   function handleClick() {
+//     setWalk(!walk);
+//         alert(walk ? "next is stop" : "next is walk");
+//   }
+
+//   return (
+//     <>
+//       <button onClick={handleClick}>
+//         Change to {walk ? 'Stop' : 'Walk'}
+//       </button>
+//       <h1 style={{
+//         color: walk ? 'darkgreen' : 'darkred'
+//       }}>
+//         {walk ? 'Walk' : 'Stop'}
+//       </h1>
+//     </>
+//   );
+// }
+
+
+//Queueing a Series of State Updates
+//the UI won’t be updated until after your event handler, and any code in it, completes. This behavior, also known as batching, makes your React app run much faster. It also avoids dealing with confusing “half-finished” renders where only some of the variables have been updated.
+
+// import { useState } from 'react';
+
+// export default function Counter() {
+//   const [number, setNumber] = useState(0);
+
+//   return (
+//     <>
+//       <h1>{number}</h1>
+//       <button onClick={() => {
+//         setNumber(n => n + 1); // It is a way to tell React to “do something with the state value” instead of just replacing it.
+//         setNumber(n => n + 1);//updater function
+//         setNumber(n => n + 1);
+//       }}>+3</button>
+//     </>
+//   )
+// }
+
+// import { useState } from 'react';
+
+// export default function Counter() {
+//   const [number, setNumber] = useState(0);
+
+//   return (
+//     <>
+//       <h1>{number}</h1>
+//       <button onClick={() => {
+//         setNumber(number + 5);
+//         setNumber(n => n + 1);
+//       }}>Increase the number</button>
+//     </>
+//   )
+// }
+
+//Challenge 1 of 2: Fix a request counter
+import { useState } from 'react';
+
+export default function RequestTracker() {
+  const [pending, setPending] = useState(0);
+  const [completed, setCompleted] = useState(0);
+
+  async function handleClick() {
+    setPending(p => p + 1);
+    await delay(3000);
+    setPending(p => p - 1);
+    setCompleted(c => c + 1);
   }
 
-  let sculpture = sculptureList[index];
   return (
     <>
-      <button onClick={handleNextClick}>
-        Next
-      </button>
-      <button onClick={handlePrev}>
-         previous
-      </button>
-      <h2>
-        <i>{sculpture.name} </i>
-        by {sculpture.artist}
-      </h2>
       <h3>
-        ({index + 1} of {sculptureList.length})
+        Pending: {pending}
       </h3>
-      <button onClick={handleMoreClick}>
-        {showMore ? 'Hide' : 'Show'} details
+      <h3>
+        Completed: {completed}
+      </h3>
+      <button onClick={handleClick}>
+        Buy
       </button>
-      {showMore && <p>{sculpture.description}</p>}
-      <img
-        src={sculpture.url}
-        alt={sculpture.alt}
-      />
     </>
   );
 }
+
+function delay(ms) {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+}
+
 
 
 
