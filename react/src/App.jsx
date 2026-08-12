@@ -1523,6 +1523,8 @@
 //   });
 // }
 
+
+// lifting state up
 import { useState } from 'react';
 
 function Panel({ title, children }) {
