@@ -1477,51 +1477,84 @@
 //   )
 // }
 
+// import { useState } from 'react';
+
+// export default function FeedbackForm() {
+//   const [text, setText] = useState('');
+//   const [isSending, setIsSending] = useState(false);
+//   const [isSent, setIsSent] = useState(false);
+
+//   async function handleSubmit(e) {
+//     e.preventDefault();
+//     setIsSending(true);
+//     await sendMessage(text);
+//     setIsSending(false);
+//     setIsSent(true);
+//   }
+
+//   if (isSent) {
+//     return <h1>Thanks for feedback!</h1>
+//   }
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <p>How was your stay at The Prancing Pony?</p>
+//       <textarea
+//         disabled={isSending}
+//         value={text}
+//         onChange={e => setText(e.target.value)}
+//       />
+//       <br />
+//       <button
+//         disabled={isSending}
+//         type="submit"
+//       >
+//         Send
+//       </button>
+//       {isSending && <p>Sending...</p>}
+//     </form>
+//   );
+// }
+
+// // Pretend to send a message.
+// function sendMessage(text) {
+//   return new Promise(resolve => {
+//     setTimeout(resolve, 2000);
+//   });
+// }
+
 import { useState } from 'react';
 
-export default function FeedbackForm() {
-  const [text, setText] = useState('');
-  const [isSending, setIsSending] = useState(false);
-  const [isSent, setIsSent] = useState(false);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setIsSending(true);
-    await sendMessage(text);
-    setIsSending(false);
-    setIsSent(true);
-  }
-
-  if (isSent) {
-    return <h1>Thanks for feedback!</h1>
-  }
-
+function Panel({ title, children }) {
+  const [isActive, setIsActive] = useState(false);
   return (
-    <form onSubmit={handleSubmit}>
-      <p>How was your stay at The Prancing Pony?</p>
-      <textarea
-        disabled={isSending}
-        value={text}
-        onChange={e => setText(e.target.value)}
-      />
-      <br />
-      <button
-        disabled={isSending}
-        type="submit"
-      >
-        Send
-      </button>
-      {isSending && <p>Sending...</p>}
-    </form>
+    <section className="panel">
+      <h3>{title}</h3>
+      {isActive ? (
+        <p>{children}</p>
+      ) : (
+        <button onClick={() => setIsActive(true)}>
+          Show
+        </button>
+      )}
+    </section>
   );
 }
 
-// Pretend to send a message.
-function sendMessage(text) {
-  return new Promise(resolve => {
-    setTimeout(resolve, 2000);
-  });
+export default function Accordion() {
+  return (
+    <>
+      <h2>Almaty, Kazakhstan</h2>
+      <Panel title="About">
+        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
+      </Panel>
+      <Panel title="Etymology">
+        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
+      </Panel>
+    </>
+  );
 }
+
 
 
 
