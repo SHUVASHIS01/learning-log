@@ -1638,11 +1638,11 @@
 //   );
 // }
 
-import { useState } from 'react';
+// import { useState } from 'react';
 
-export default function App() {
-  const [isPaused, setIsPaused] = useState(false);
-  return (
+// export default function App() {
+//   const [isPaused, setIsPaused] = useState(false);
+//   return (
 //      <div> //position same div er moddhe tai state preserved thaktese 
 //       {isPaused ? (
 //         <p>See you later!</p>
@@ -1686,6 +1686,61 @@ export default function App() {
 //   );
 // }
 
+// //different position e thakle state reset hoye jay 
+// import { useState } from 'react';
+
+// export default function App() {
+//   const [isFancy, setIsFancy] = useState(false);
+//   return (
+//     <div>
+//       {isFancy ? (
+//         <div>
+//           <Counter isFancy={true} />
+//         </div>
+//       ) : (
+//         <section>
+//           <Counter isFancy={false} />
+//         </section>
+//       )}
+//       <label>
+//         <input
+//           type="checkbox"
+//           checked={isFancy}
+//           onChange={e => {
+//             setIsFancy(e.target.checked)
+//           }}
+//         />
+//         Use fancy styling
+//       </label>
+//     </div>
+//   );
+// }
+
+// function Counter({ isFancy }) {
+//   const [score, setScore] = useState(0);
+//   const [hover, setHover] = useState(false);
+
+//   let className = 'counter';
+//   if (hover) {
+//     className += ' hover';
+//   }
+//   if (isFancy) {
+//     className += ' fancy';
+//   }
+
+//   return (
+//     <div
+//       className={className}
+//       onPointerEnter={() => setHover(true)}
+//       onPointerLeave={() => setHover(false)}
+//     >
+//       <h1>{score}</h1>
+//       <button onClick={() => setScore(score + 1)}>
+//         Add one
+//       </button>
+//     </div>
+//   );
+// }
 
 
 
