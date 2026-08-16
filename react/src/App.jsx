@@ -1942,166 +1942,320 @@
 //   );
 // }
 
-import { createContext, useContext, useState } from "react";
+// import { createContext, useContext, useState } from "react";
 
 
-// =====================================================
-// 1. CREATE CONTEXT
-// =====================================================
+// // =====================================================
+// // 1. CREATE CONTEXT
+// // =====================================================
 
-// Ekhane amra ekta Context create korchi
-// "light" holo default value
-// Jodi kono Provider na thake, tahole "light" pawa jabe
+// // Ekhane amra ekta Context create korchi
+// // "light" holo default value
+// // Jodi kono Provider na thake, tahole "light" pawa jabe
 
-const ThemeContext = createContext("light");
-
-
-// =====================================================
-// 2. APP COMPONENT
-// =====================================================
-
-function App() {
-
-  // Ekhane theme er state rakha hocche
-  // Prothome theme er value holo "light"
-
-  const [theme, setTheme] = useState("light");
+// const ThemeContext = createContext("light");
 
 
-  // Ei function ta theme change korbe
-  // light hole dark korbe
-  // dark hole light korbe
+// // =====================================================
+// // 2. APP COMPONENT
+// // =====================================================
 
-  function toggleTheme() {
+// function App() {
 
-    setTheme(previousTheme =>
-      previousTheme === "light"
-        ? "dark"
-        : "light"
-    );
-  }
+//   // Ekhane theme er state rakha hocche
+//   // Prothome theme er value holo "light"
+
+//   const [theme, setTheme] = useState("light");
 
 
-  return (
+//   // Ei function ta theme change korbe
+//   // light hole dark korbe
+//   // dark hole light korbe
 
-    // =================================================
-    // 3. CONTEXT PROVIDER
-    // =================================================
+//   function toggleTheme() {
 
-    // Ekhane amra Context er moddhe data provide korchi
-    //
-    // theme = current theme
-    // toggleTheme = theme change korar function
-    //
-    // Ei Provider er vitore joto component ache
-    // tara ei data access korte parbe
-
-    <ThemeContext value={{ theme, toggleTheme }}>
-
-      <Page />
-
-    </ThemeContext>
-  );
-}
+//     setTheme(previousTheme =>
+//       previousTheme === "light"
+//         ? "dark"
+//         : "light"
+//     );
+//   }
 
 
-// =====================================================
-// 4. PAGE COMPONENT
-// =====================================================
+//   return (
 
-function Page() {
+//     // =================================================
+//     // 3. CONTEXT PROVIDER
+//     // =================================================
 
-  return (
-    <div>
+//     // Ekhane amra Context er moddhe data provide korchi
+//     //
+//     // theme = current theme
+//     // toggleTheme = theme change korar function
+//     //
+//     // Ei Provider er vitore joto component ache
+//     // tara ei data access korte parbe
 
-      <h1>My Website</h1>
+//     <ThemeContext value={{ theme, toggleTheme }}>
 
-      {/*
-        Page component er nijer theme dorkar nei.
+//       <Page />
 
-        Tai ekhane theme ke props hisebe pathanor
-        kono proyojon nei.
-
-        Context er karone Button direct theme pete parbe.
-      */}
-
-      <Profile />
-
-    </div>
-  );
-}
+//     </ThemeContext>
+//   );
+// }
 
 
-// =====================================================
-// 5. PROFILE COMPONENT
-// =====================================================
+// // =====================================================
+// // 4. PAGE COMPONENT
+// // =====================================================
 
-function Profile() {
+// function Page() {
 
-  return (
-    <div>
+//   return (
+//     <div>
 
-      <h2>Profile</h2>
+//       <h1>My Website</h1>
 
-      {/*
-        Profile er-o theme dorkar nei.
+//       {/*
+//         Page component er nijer theme dorkar nei.
 
-        Tai theme ke Profile e props hisebe
-        pathanor proyojon nei.
+//         Tai ekhane theme ke props hisebe pathanor
+//         kono proyojon nei.
 
-        Button er kache direct Context theke data jabe.
-      */}
+//         Context er karone Button direct theme pete parbe.
+//       */}
 
-      <Button />
+//       <Profile />
 
-    </div>
-  );
-}
-
-
-// =====================================================
-// 6. BUTTON COMPONENT
-// =====================================================
-
-function Button() {
-
-  // =================================================
-  // 7. USE CONTEXT
-  // =================================================
-
-  // Ekhane amra ThemeContext theke data nicchi
-  //
-  // theme = current theme
-  // toggleTheme = theme change korar function
-
-  const { theme, toggleTheme } = useContext(ThemeContext);
+//     </div>
+//   );
+// }
 
 
-  return (
+// // =====================================================
+// // 5. PROFILE COMPONENT
+// // =====================================================
 
-    <div>
+// function Profile() {
 
-      {/* Current theme screen e show korbe */}
+//   return (
+//     <div>
 
-      <p>
-        Current Theme: {theme}
-      </p>
+//       <h2>Profile</h2>
 
+//       {/*
+//         Profile er-o theme dorkar nei.
 
-      {/* 
-        Button click korle toggleTheme function call hobe
-        ebong theme change hoye jabe
-      */}
+//         Tai theme ke Profile e props hisebe
+//         pathanor proyojon nei.
 
-      <button onClick={toggleTheme}>
-        Change Theme
-      </button>
+//         Button er kache direct Context theke data jabe.
+//       */}
 
-    </div>
-  );
-}
+//       <Button />
 
-
-export default App;
+//     </div>
+//   );
+// }
 
 
+// // =====================================================
+// // 6. BUTTON COMPONENT
+// // =====================================================
+
+// function Button() {
+
+//   // =================================================
+//   // 7. USE CONTEXT
+//   // =================================================
+
+//   // Ekhane amra ThemeContext theke data nicchi
+//   //
+//   // theme = current theme
+//   // toggleTheme = theme change korar function
+
+//   const { theme, toggleTheme } = useContext(ThemeContext);
+
+
+//   return (
+
+//     <div>
+
+//       {/* Current theme screen e show korbe */}
+
+//       <p>
+//         Current Theme: {theme}
+//       </p>
+
+
+//       {/* 
+//         Button click korle toggleTheme function call hobe
+//         ebong theme change hoye jabe
+//       */}
+
+//       <button onClick={toggleTheme}>
+//         Change Theme
+//       </button>
+
+//     </div>
+//   );
+// }
+
+
+// export default App;
+
+// import { useRef } from "react";
+
+// function App() {
+
+//   // Ekhane ref create korchi
+//   // Initial value holo 0
+
+//   const countRef = useRef(0);
+
+
+//   function handleClick() {
+
+//     // Ref-er current value 1 kore dicchi
+
+//     countRef.current = countRef.current + 1;
+
+
+//     // Ekhane updated value immediately pawa jabe
+
+//     console.log(countRef.current);
+//   }
+
+
+//   return (
+//     <button onClick={handleClick}>
+//       Click me
+//     </button>
+//   );
+// }
+
+// export default App;
+
+// //use cases 
+// /*timer ID
+// timeout ID
+// DOM element
+// previous value
+// external API object*/
+
+// import { useState, useRef } from "react";
+
+// function Stopwatch() {
+
+//   // =================================================
+//   // STATE
+//   // =================================================
+
+//   // Stopwatch kobe start hoyeche
+//   // Eta screen-er calculation-er jonno dorkar
+
+//   const [startTime, setStartTime] = useState(null);
+
+
+//   // Current time
+//   // Eta change hole UI update korte hobe
+
+//   const [now, setNow] = useState(null);
+
+
+//   // =================================================
+//   // REF
+//   // =================================================
+
+//   // setInterval() je ID return kore
+//   // sheta ekhane store korbo
+//   //
+//   // Ei ID screen-e show korar dorkar nei
+//   // Tai state na, ref use korchi
+
+//   const intervalRef = useRef(null);
+
+
+//   // =================================================
+//   // START
+//   // =================================================
+
+//   function handleStart() {
+
+//     // Stopwatch start korar time save korchi
+
+//     setStartTime(Date.now());
+
+//     setNow(Date.now());
+
+
+//     // Jodi age kono interval thake
+//     // tahole age seta clear kore dicchi
+
+//     clearInterval(intervalRef.current);
+
+
+//     // Notun interval create korchi
+//     // Prottek 10ms por por current time update hobe
+
+//     intervalRef.current = setInterval(() => {
+
+//       setNow(Date.now());
+
+//     }, 10);
+//   }
+
+
+//   // =================================================
+//   // STOP
+//   // =================================================
+
+//   function handleStop() {
+
+//     // Ref-er moddhe je interval ID store korechilam
+//     // sheta use kore interval bondho korchi
+
+//     clearInterval(intervalRef.current);
+//   }
+
+
+//   // =================================================
+//   // CALCULATE TIME
+//   // =================================================
+
+//   let secondsPassed = 0;
+
+
+//   if (startTime !== null && now !== null) {
+
+//     secondsPassed =
+//       (now - startTime) / 1000;
+//   }
+
+
+//   // =================================================
+//   // UI
+//   // =================================================
+
+//   return (
+//     <div>
+
+//       <h1>
+//         Time passed: {secondsPassed.toFixed(3)}
+//       </h1>
+
+
+//       <button onClick={handleStart}>
+//         Start
+//       </button>
+
+
+//       <button onClick={handleStop}>
+//         Stop
+//       </button>
+
+//     </div>
+//   );
+// }
+
+// export default Stopwatch;
