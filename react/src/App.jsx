@@ -2261,22 +2261,51 @@
 // export default Stopwatch;
 
 
+// import { useRef } from "react";
+
+// export default function Form() {
+//   const inputRef = useRef(null);
+
+//   function handleClick() {
+//     inputRef.current.focus();
+//   }
+
+//   return (
+//     <>
+//       <input ref={inputRef} />
+
+//       <button onClick={handleClick}>
+//         Focus the input
+//       </button>
+//     </>
+//   );
+// }
+
+
 import { useRef } from "react";
 
-export default function Form() {
-  const inputRef = useRef(null);
+export default function App() {
+  const sectionRef = useRef(null);
 
   function handleClick() {
-    inputRef.current.focus();
+    sectionRef.current.scrollIntoView({
+      behavior: "smooth"
+    });
   }
 
   return (
     <>
-      <input ref={inputRef} />
-
       <button onClick={handleClick}>
-        Focus the input
+        Go to Section 3
       </button>
+
+      <div style={{ height: "1000px" }}>
+        Section 1
+      </div>
+
+      <div ref={sectionRef}>
+        Section 3
+      </div>
     </>
   );
 }
