@@ -1916,32 +1916,192 @@
 //   {id: 2, text: 'Lennon Wall pic', done: false},
 // ];
 
-import Heading from './Heading.js';
-import Section from './Section.js';
+// import Heading from './Heading.js';
+// import Section from './Section.js';
 
-export default function Page() {
+// export default function Page() {
+//   return (
+//     <Section>
+//       <Heading level={1}>Title</Heading>
+//       <Section>
+//         <Heading level={2}>Heading</Heading>
+//         <Heading level={2}>Heading</Heading>
+//         <Heading level={2}>Heading</Heading>
+//         <Section>
+//           <Heading level={3}>Sub-heading</Heading>
+//           <Heading level={3}>Sub-heading</Heading>
+//           <Heading level={3}>Sub-heading</Heading>
+//           <Section>
+//             <Heading level={4}>Sub-sub-heading</Heading>
+//             <Heading level={4}>Sub-sub-heading</Heading>
+//             <Heading level={4}>Sub-sub-heading</Heading>
+//           </Section>
+//         </Section>
+//       </Section>
+//     </Section>
+//   );
+// }
+
+import { createContext, useContext, useState } from "react";
+
+
+// =====================================================
+// 1. CREATE CONTEXT
+// =====================================================
+
+// Ekhane amra ekta Context create korchi
+// "light" holo default value
+// Jodi kono Provider na thake, tahole "light" pawa jabe
+
+const ThemeContext = createContext("light");
+
+
+// =====================================================
+// 2. APP COMPONENT
+// =====================================================
+
+function App() {
+
+  // Ekhane theme er state rakha hocche
+  // Prothome theme er value holo "light"
+
+  const [theme, setTheme] = useState("light");
+
+
+  // Ei function ta theme change korbe
+  // light hole dark korbe
+  // dark hole light korbe
+
+  function toggleTheme() {
+
+    setTheme(previousTheme =>
+      previousTheme === "light"
+        ? "dark"
+        : "light"
+    );
+  }
+
+
   return (
-    <Section>
-      <Heading level={1}>Title</Heading>
-      <Section>
-        <Heading level={2}>Heading</Heading>
-        <Heading level={2}>Heading</Heading>
-        <Heading level={2}>Heading</Heading>
-        <Section>
-          <Heading level={3}>Sub-heading</Heading>
-          <Heading level={3}>Sub-heading</Heading>
-          <Heading level={3}>Sub-heading</Heading>
-          <Section>
-            <Heading level={4}>Sub-sub-heading</Heading>
-            <Heading level={4}>Sub-sub-heading</Heading>
-            <Heading level={4}>Sub-sub-heading</Heading>
-          </Section>
-        </Section>
-      </Section>
-    </Section>
+
+    // =================================================
+    // 3. CONTEXT PROVIDER
+    // =================================================
+
+    // Ekhane amra Context er moddhe data provide korchi
+    //
+    // theme = current theme
+    // toggleTheme = theme change korar function
+    //
+    // Ei Provider er vitore joto component ache
+    // tara ei data access korte parbe
+
+    <ThemeContext value={{ theme, toggleTheme }}>
+
+      <Page />
+
+    </ThemeContext>
   );
 }
 
 
+// =====================================================
+// 4. PAGE COMPONENT
+// =====================================================
+
+function Page() {
+
+  return (
+    <div>
+
+      <h1>My Website</h1>
+
+      {/*
+        Page component er nijer theme dorkar nei.
+
+        Tai ekhane theme ke props hisebe pathanor
+        kono proyojon nei.
+
+        Context er karone Button direct theme pete parbe.
+      */}
+
+      <Profile />
+
+    </div>
+  );
+}
+
+
+// =====================================================
+// 5. PROFILE COMPONENT
+// =====================================================
+
+function Profile() {
+
+  return (
+    <div>
+
+      <h2>Profile</h2>
+
+      {/*
+        Profile er-o theme dorkar nei.
+
+        Tai theme ke Profile e props hisebe
+        pathanor proyojon nei.
+
+        Button er kache direct Context theke data jabe.
+      */}
+
+      <Button />
+
+    </div>
+  );
+}
+
+
+// =====================================================
+// 6. BUTTON COMPONENT
+// =====================================================
+
+function Button() {
+
+  // =================================================
+  // 7. USE CONTEXT
+  // =================================================
+
+  // Ekhane amra ThemeContext theke data nicchi
+  //
+  // theme = current theme
+  // toggleTheme = theme change korar function
+
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+
+  return (
+
+    <div>
+
+      {/* Current theme screen e show korbe */}
+
+      <p>
+        Current Theme: {theme}
+      </p>
+
+
+      {/* 
+        Button click korle toggleTheme function call hobe
+        ebong theme change hoye jabe
+      */}
+
+      <button onClick={toggleTheme}>
+        Change Theme
+      </button>
+
+    </div>
+  );
+}
+
+
+export default App;
 
 
