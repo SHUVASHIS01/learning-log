@@ -2282,30 +2282,80 @@
 // }
 
 
-import { useRef } from "react";
+// import { useRef } from "react";
 
-export default function App() {
-  const sectionRef = useRef(null);
+// export default function App() {
+//   const sectionRef = useRef(null);
 
-  function handleClick() {
-    sectionRef.current.scrollIntoView({
-      behavior: "smooth"
-    });
-  }
+//   function handleClick() {
+//     sectionRef.current.scrollIntoView({
+//       behavior: "smooth"
+//     });
+//   }
+
+//   return (
+//     <>
+//       <button onClick={handleClick}>
+//         Go to Section 3
+//       </button>
+
+//       <div style={{ height: "1000px" }}>
+//         Section 1
+//       </div>
+
+//       <div ref={sectionRef}>
+//         Section 3
+//       </div>
+//     </>
+//   );
+// }
+
+
+import { useState } from "react";
+
+function ProductList({ products }) {
+
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("all");
+
+  const filteredProducts = products.filter(product => {
+
+    const matchesSearch =
+      product.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+    const matchesCategory =
+      category === "all" ||
+      product.category === category;
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
-    <>
-      <button onClick={handleClick}>
-        Go to Section 3
-      </button>
+    <div>
 
-      <div style={{ height: "1000px" }}>
-        Section 1
-      </div>
+      <input
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+        placeholder="Search..."
+      />
 
-      <div ref={sectionRef}>
-        Section 3
-      </div>
-    </>
+      <select
+        value={category}
+        onChange={e => setCategory(e.target.value)}
+      >
+        <option value="all">All</option>
+        <option value="phone">Phone</option>
+        <option value="laptop">Laptop</option>
+      </select>
+
+      {filteredProducts.map(product => (
+        <div key={product.id}>
+          {product.name}
+        </div>
+      ))}
+
+    </div>
   );
 }
