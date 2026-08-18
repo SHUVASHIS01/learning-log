@@ -2311,51 +2311,331 @@
 // }
 
 
-import { useState } from "react";
+// import { useState } from "react";
 
-function ProductList({ products }) {
+// function ProductList({ products }) {
 
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("all");
+//   const [search, setSearch] = useState("");
+//   const [category, setCategory] = useState("all");
 
-  const filteredProducts = products.filter(product => {
+//   const filteredProducts = products.filter(product => {
 
-    const matchesSearch =
-      product.name
-        .toLowerCase()
-        .includes(search.toLowerCase());
+//     const matchesSearch =
+//       product.name
+//         .toLowerCase()
+//         .includes(search.toLowerCase());
 
-    const matchesCategory =
-      category === "all" ||
-      product.category === category;
+//     const matchesCategory =
+//       category === "all" ||
+//       product.category === category;
 
-    return matchesSearch && matchesCategory;
-  });
+//     return matchesSearch && matchesCategory;
+//   });
+
+//   return (
+//     <div>
+
+//       <input
+//         value={search}
+//         onChange={e => setSearch(e.target.value)}
+//         placeholder="Search..."
+//       />
+
+//       <select
+//         value={category}
+//         onChange={e => setCategory(e.target.value)}
+//       >
+//         <option value="all">All</option>
+//         <option value="phone">Phone</option>
+//         <option value="laptop">Laptop</option>
+//       </select>
+
+//       {filteredProducts.map(product => (
+//         <div key={product.id}>
+//           {product.name}
+//         </div>
+//       ))}
+
+//     </div>
+//   );
+// }
+
+
+// import { useState, useEffect } from 'react';
+
+// function createConnection(roomId) {
+//   return {
+//     connect() {
+//       console.log(`✅ Connecting to "${roomId}"...`);
+//     },
+//     disconnect() {
+//       console.log(`❌ Disconnecting from "${roomId}"...`);
+//     }
+//   };
+// }
+
+// function ChatRoom({ roomId }) {
+//   useEffect(() => {
+//     const connection = createConnection(roomId);
+//     connection.connect();
+
+//     return () => {
+//       connection.disconnect();
+//     };
+//   }, [roomId]);
+
+//   return <h1>Welcome to the {roomId} room!</h1>;
+// }
+
+// export default function App() {
+//   const [roomId, setRoomId] = useState('general');
+//   const [show, setShow] = useState(true);
+
+//   return (
+//     <div style={{ padding: 20, fontFamily: 'sans-serif' }}>
+//       <label>
+//         Choose a room:{' '}
+//         <select value={roomId} onChange={(e) => setRoomId(e.target.value)}>
+//           <option value="general">general</option>
+//           <option value="music">music</option>
+//           <option value="travel">travel</option>
+//         </select>
+//       </label>
+
+//       <br /><br />
+
+//       <button onClick={() => setShow(!show)}>
+//         {show ? 'Unmount' : 'Mount'} the ChatRoom
+//       </button>
+
+//       <hr />
+
+//       {show && <ChatRoom roomId={roomId} />}
+
+//       <p style={{ color: '#666' }}>
+//         Open the console. Change rooms, then click the mount/unmount button.
+//       </p>
+//     </div>
+    
+//   );
+// }
+
+// //static build kora first e
+// function ProductCategoryRow({ category }) {
+//   return (
+//     <tr>
+//       <th colSpan="2">
+//         {category}
+//       </th>
+//     </tr>
+//   );
+// }
+
+// function ProductRow({ product }) {
+//   const name = product.stocked ? product.name :
+//     <span style={{ color: 'red' }}>
+//       {product.name}
+//     </span>;
+
+//   return (
+//     <tr>
+//       <td>{name}</td>
+//       <td>{product.price}</td>
+//     </tr>
+//   );
+// }
+
+// function ProductTable({ products }) {
+//   const rows = [];
+//   let lastCategory = null;
+
+//   products.forEach((product) => {
+//     if (product.category !== lastCategory) {
+//       rows.push(
+//         <ProductCategoryRow
+//           category={product.category}
+//           key={product.category} />
+//       );
+//     }
+//     rows.push(
+//       <ProductRow
+//         product={product}
+//         key={product.name} />
+//     );
+//     lastCategory = product.category;
+//   });
+
+//   return (
+//     <table>
+//       <thead>
+//         <tr>
+//           <th>Name</th>
+//           <th>Price</th>
+//         </tr>
+//       </thead>
+//       <tbody>{rows}</tbody>
+//     </table>
+//   );
+// }
+
+// function SearchBar() {
+//   return (
+//     <form>
+//       <input type="text" placeholder="Search..." />
+//       <label>
+//         <input type="checkbox" />
+//         {' '}
+//         Only show products in stock
+//       </label>
+//     </form>
+//   );
+// }
+
+// function FilterableProductTable({ products }) {
+//   return (
+//     <div>
+//       <SearchBar />
+//       <ProductTable products={products} />
+//     </div>
+//   );
+// }
+
+// const PRODUCTS = [
+//   {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
+//   {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
+//   {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
+//   {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
+//   {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
+//   {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+// ];
+
+// export default function App() {
+//   return <FilterableProductTable products={PRODUCTS} />;
+// }
+
+
+import { useState } from 'react';
+
+function FilterableProductTable({ products }) {
+  const [filterText, setFilterText] = useState('');
+  const [inStockOnly, setInStockOnly] = useState(false);
 
   return (
     <div>
-
-      <input
-        value={search}
-        onChange={e => setSearch(e.target.value)}
-        placeholder="Search..."
-      />
-
-      <select
-        value={category}
-        onChange={e => setCategory(e.target.value)}
-      >
-        <option value="all">All</option>
-        <option value="phone">Phone</option>
-        <option value="laptop">Laptop</option>
-      </select>
-
-      {filteredProducts.map(product => (
-        <div key={product.id}>
-          {product.name}
-        </div>
-      ))}
-
+      <SearchBar
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+        onFilterTextChange={setFilterText}
+        onInStockOnlyChange={setInStockOnly} />
+      <ProductTable
+        products={products}
+        filterText={filterText}
+        inStockOnly={inStockOnly} />
     </div>
   );
 }
+
+function ProductCategoryRow({ category }) {
+  return (
+    <tr>
+      <th colSpan="2">
+        {category}
+      </th>
+    </tr>
+  );
+}
+
+function ProductRow({ product }) {
+  const name = product.stocked ? product.name :
+    <span style={{ color: 'red' }}>
+      {product.name}
+    </span>;
+
+  return (
+    <tr>
+      <td>{name}</td>
+      <td>{product.price}</td>
+    </tr>
+  );
+}
+
+function ProductTable({ products, filterText, inStockOnly }) {
+  const rows = [];
+  let lastCategory = null;
+
+  products.forEach((product) => {
+    if (
+      product.name.toLowerCase().indexOf(
+        filterText.toLowerCase()
+      ) === -1
+    ) {
+      return;
+    }
+    if (inStockOnly && !product.stocked) {
+      return;
+    }
+    if (product.category !== lastCategory) {
+      rows.push(
+        <ProductCategoryRow
+          category={product.category}
+          key={product.category} />
+      );
+    }
+    rows.push(
+      <ProductRow
+        product={product}
+        key={product.name} />
+    );
+    lastCategory = product.category;
+  });
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>{rows}</tbody>
+    </table>
+  );
+}
+
+function SearchBar({
+  filterText,
+  inStockOnly,
+  onFilterTextChange,
+  onInStockOnlyChange
+}) {
+  return (
+    <form>
+      <input
+        type="text"
+        value={filterText} placeholder="Search..."
+        onChange={(e) => onFilterTextChange(e.target.value)} />
+      <label>
+        <input
+          type="checkbox"
+          checked={inStockOnly}
+          onChange={(e) => onInStockOnlyChange(e.target.checked)} />
+        {' '}
+        Only show products in stock
+      </label>
+    </form>
+  );
+}
+
+const PRODUCTS = [
+  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
+  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
+  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
+  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
+  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
+  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+];
+
+export default function App() {
+  return <FilterableProductTable products={PRODUCTS} />;
+}
+
