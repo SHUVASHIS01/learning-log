@@ -1,5 +1,9 @@
 import Link from "next/link";
 import { blogs } from "./blogs";
+export const metadata = {
+    title: "Blogs",
+    description: "...",
+};
 
 export default function blogsPage() {
   return (

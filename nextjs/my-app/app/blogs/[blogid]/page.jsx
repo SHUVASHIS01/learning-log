@@ -1,5 +1,9 @@
 import { notFound } from "next/navigation";
 import { blogs } from "../blogs";
+export const metadata = {
+    title: "Blogs",
+    description: "...",
+};
 
 export default async function blogId({params}) {
     const {blogid} = await params
