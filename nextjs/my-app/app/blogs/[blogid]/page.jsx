@@ -21,3 +21,5 @@ export default async function blogId({params}) {
     </div>
   );
 }
+//If the rendering happens on the client side it's called CSR, aand if it happens on the server side it's caled SSR
+//server shudhu html send kore, javascript html e attach kore dewa hydrations
