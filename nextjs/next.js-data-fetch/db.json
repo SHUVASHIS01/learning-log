@@ -1,0 +1,49 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Classic T-Shirt",
+      "price": 25,
+      "category": "Clothing",
+      "description": "A comfortable cotton t-shirt for everyday wear.",
+      "image": "https://via.placeholder.com/300x300?text=Classic+T-Shirt",
+      "stock": 50
+    },
+    {
+      "id": 2,
+      "name": "Running Shoes",
+      "price": 80,
+      "category": "Footwear",
+      "description": "Lightweight running shoes designed for comfort and performance.",
+      "image": "https://via.placeholder.com/300x300?text=Running+Shoes",
+      "stock": 25
+    },
+    {
+      "id": 3,
+      "name": "Leather Backpack",
+      "price": 65,
+      "category": "Accessories",
+      "description": "Stylish and durable backpack suitable for work and travel.",
+      "image": "https://via.placeholder.com/300x300?text=Leather+Backpack",
+      "stock": 15
+    },
+    {
+      "id": 4,
+      "name": "Smart Watch",
+      "price": 120,
+      "category": "Electronics",
+      "description": "A modern smartwatch with fitness tracking and notifications.",
+      "image": "https://via.placeholder.com/300x300?text=Smart+Watch",
+      "stock": 20
+    },
+    {
+      "id": 5,
+      "name": "Wireless Headphones",
+      "price": 90,
+      "category": "Electronics",
+      "description": "Wireless headphones with clear sound and long battery life.",
+      "image": "https://via.placeholder.com/300x300?text=Wireless+Headphones",
+      "stock": 30
+    }
+  ]
+}
