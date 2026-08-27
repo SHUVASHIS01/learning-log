@@ -1,0 +1,94 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Complete React Tutorial",
+      "description": "Finish the React state and effects lessons.",
+      "completed": false,
+      "priority": "High",
+      "category": "Study",
+      "dueDate": "2026-08-28"
+    },
+    {
+      "id": 2,
+      "title": "Build Todo App",
+      "description": "Create a todo application using React.",
+      "completed": false,
+      "priority": "Medium",
+      "category": "Development",
+      "dueDate": "2026-08-29"
+    },
+    {
+      "id": 3,
+      "title": "Push Code to GitHub",
+      "description": "Commit and push today's learning progress.",
+      "completed": true,
+      "priority": "Low",
+      "category": "Development",
+      "dueDate": "2026-08-27"
+    },
+    {
+      "id": 4,
+      "title": "Practice JavaScript",
+      "description": "Solve 5 JavaScript problems.",
+      "completed": false,
+      "priority": "High",
+      "category": "Practice",
+      "dueDate": "2026-08-30"
+    },
+    {
+      "id": 5,
+      "title": "Read Next.js Documentation",
+      "description": "Learn about data fetching and caching.",
+      "completed": false,
+      "priority": "Medium",
+      "category": "Study",
+      "dueDate": "2026-08-31"
+    },
+    {
+      "id": 6,
+      "title": "Update Resume",
+      "description": "Add recent projects and technical skills.",
+      "completed": true,
+      "priority": "Medium",
+      "category": "Career",
+      "dueDate": "2026-08-26"
+    },
+    {
+      "id": 7,
+      "title": "Watch Git Tutorial",
+      "description": "Learn Git branching and merging.",
+      "completed": false,
+      "priority": "Low",
+      "category": "Learning",
+      "dueDate": "2026-09-01"
+    },
+    {
+      "id": 8,
+      "title": "Work on Portfolio",
+      "description": "Improve the projects section of the portfolio.",
+      "completed": false,
+      "priority": "High",
+      "category": "Development",
+      "dueDate": "2026-09-02"
+    },
+    {
+      "id": 9,
+      "title": "Solve Coding Challenge",
+      "description": "Complete one problem from LeetCode.",
+      "completed": false,
+      "priority": "Medium",
+      "category": "Practice",
+      "dueDate": "2026-09-03"
+    },
+    {
+      "id": 10,
+      "title": "Plan Weekly Goals",
+      "description": "Prepare goals and tasks for the upcoming week.",
+      "completed": false,
+      "priority": "Low",
+      "category": "Planning",
+      "dueDate": "2026-09-04"
+    }
+  ]
+}
