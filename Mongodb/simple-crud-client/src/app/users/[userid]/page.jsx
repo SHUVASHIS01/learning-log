@@ -6,7 +6,7 @@ export default async function UserDetailPage({params}) {
     console.log(user);
   return (
     <div className="">
-       <h2>User Details</h2>
+       <h2>User Details: {user.name}</h2>
     </div>
   );
 }
