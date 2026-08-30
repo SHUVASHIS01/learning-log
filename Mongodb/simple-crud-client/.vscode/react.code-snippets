@@ -1,0 +1,16 @@
+{
+  "React Component": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact,jsx,tsx",
+    "prefix": "rsc",
+    "body": [
+      "export default function ${1:ComponentName}() {",
+      "  return (",
+      "    <div className=\"${2}\">",
+      "      ${3}",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Create a React component scaffold"
+  }
+}
